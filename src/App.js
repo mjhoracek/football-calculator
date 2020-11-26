@@ -1,23 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import './App.css'
+import Game from './components/Game'
 
-function App() {
+const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
+
+function App() {  
+const [games, setGames] = useState([
+  {
+    away: 'Oakland Raiders',
+    home: 'Denver Broncos',
+    predictedWinner: '####',
+  },
+  {
+    away: 'New England Patriots',
+    home: 'Kansas City Chiefs',
+    predictedWinner: '####',
+  }
+])
+
+
+
+useEffect(() => {
+  const fetchItems = async () => {
+    const result = await axios(APILINK)
+    result.map(game => ({
+      teams: game.data.events.name,
+      userInput1: ''
+    }));
+    console.log(result);
+   
+/*     const data = result.data.events
+    let newGames = [];
+    for(let i = 0; i < data.length; i++){
+      newGames.push(data[i].name);
+    }
+    let schedule = [{}];
+    for(let i = 0; i < newGames.length; i++){
+      schedule.push({theGames: i})
+    }
+    console.log(newGames) */
+    
+  }
+  fetchItems();
+})
+
+
+const handleChange = (index, value) => {
+  const newGames = [...games];
+  newGames[index].predictedWinner = value;
+      setGames(newGames);
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        {games.map((game, index) => (
+          <Game key={index} index={index} game={game} handleChange={handleChange} />
+        ))}
+      </div>
     </div>
   );
 }
