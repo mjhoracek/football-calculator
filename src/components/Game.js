@@ -99,6 +99,7 @@ const handleSubmit = e => {
                 <div>
                     The Predicted Winner is: {game.predictedWinner} 
                 </div>
+                <h3>{predict}...{probability}</h3>
                 </Container>
          </div>
     )
