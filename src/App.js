@@ -7,44 +7,31 @@ const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/score
 
 
 function App() {  
-const [games, setGames] = useState([
-  {
-    away: 'Oakland Raiders',
-    home: 'Denver Broncos',
-    predictedWinner: '####',
-  },
-  {
-    away: 'New England Patriots',
-    home: 'Kansas City Chiefs',
-    predictedWinner: '####',
-  }
-])
-
+const [games, setGames] = useState([]);
 
 
 useEffect(() => {
   const fetchItems = async () => {
     const result = await axios(APILINK)
-    result.map(game => ({
-      teams: game.data.events.name,
-      userInput1: ''
-    }));
-    console.log(result);
-   
-/*     const data = result.data.events
+    const data = result.data.events
+
     let newGames = [];
     for(let i = 0; i < data.length; i++){
       newGames.push(data[i].name);
     }
-    let schedule = [{}];
-    for(let i = 0; i < newGames.length; i++){
-      schedule.push({theGames: i})
-    }
-    console.log(newGames) */
-    
+
+    let schedule = newGames.map(game => {
+      let split = game.split(' at ');
+      return { 
+        home: split[0],
+        away: split[1],     
+        predictedWinner: ''
+      }
+    }); 
+    setGames(schedule)``
   }
   fetchItems();
-})
+},[])
 
 
 const handleChange = (index, value) => {

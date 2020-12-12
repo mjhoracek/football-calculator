@@ -5,32 +5,65 @@ const Teams = styled.div`
     display: flex;
     margin-top: 100px;
     justify-content: center;
-    background-color: lightblue;
+    background-color: rgb(34, 92, 146);
     h3 {
         margin-left: 15px;
         margin-right: 15px;
     }
 `
 
+const Container = styled.div`
+    background-color: rgb(34, 92, 146);
+    color: white;
+    font-weight: bold;
+`
+
+const Form = styled.div`
+    display: block;
+    flex-direction: column;
+`
+
 const Game = ({index, game, handleChange }) => {
 const [predict, setPredict] = useState("xxxx")
-const [probability, setProbability] = useState('xxxx')
+const [probability, setProbability] = useState(null)
+
+ 
+const pickFunction = () => {
+    if(probability === null || predict === "xxxx") {alert("Set Probability and Favorite")};
+
+    //Random number generated to test against favorite odds in probability variable 
+    let mathPick = Math.floor(Math.random() * 100);
+    console.log(mathPick)
+
+    //Switches predicted winner if math variable is higher than favorite odds
+    if(predict === game.home && mathPick >= probability){
+        setPredict(game.away);
+        console.log('upset');
+    } else if(predict === game.away && mathPick >= probability){
+        setPredict(game.home);
+        console.log('upset');
+    }
+    
+}
+
 
 const handleSubmit = e => {
     e.preventDefault();
-    if(predict === "xxxx") return;
+    pickFunction();
     handleChange(index, predict)
 }
 
 
     return (
-        <div >
-            <Teams>
-                <h3>{game.home}</h3>
-                <h3>VS</h3>
-                <h3>{game.away}</h3>
-            </Teams>
+        <div>
+            <Container>
+                <Teams>
+                    <h3>{game.home}</h3>
+                    <h3>VS</h3>
+                    <h3>{game.away}</h3>
+                </Teams>
 
+            <Form>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="radio" 
@@ -62,12 +95,11 @@ const handleSubmit = e => {
 
                 <input type="submit" value="Confirm" />
             </form>
-
-                <div style={{backgroundColor: "lightblue"}}>
+            </Form> 
+                <div>
                     The Predicted Winner is: {game.predictedWinner} 
                 </div>
-                
-            <h1>{probability}, {predict} </h1>
+                </Container>
          </div>
     )
 }
