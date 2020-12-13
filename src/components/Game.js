@@ -26,6 +26,7 @@ const Form = styled.div`
 const Game = ({index, game, handleChange }) => {
 const [predict, setPredict] = useState("xxxx")
 const [probability, setProbability] = useState(null)
+const [winner, setWinner] = useState(null)
 
  
 const pickFunction = () => {
@@ -36,21 +37,30 @@ const pickFunction = () => {
     console.log(mathPick)
 
     //Switches predicted winner if math variable is higher than favorite odds
-    if(predict === game.home && mathPick >= probability){
-        setPredict(game.away);
-        console.log('upset');
-    } else if(predict === game.away && mathPick >= probability){
-        setPredict(game.home);
-        console.log('upset');
+    if(predict === game.home){
+        if(mathPick >= probability){
+            setWinner(game.away)
+        } else {
+            setWinner(game.home)
+        }
+    } else if(predict === game.away){
+        if(mathPick >= probability){
+            setWinner(game.home)
+        } else {
+            setWinner(game.away)
+        }
     }
-    
+
+
+
+
 }
 
 
 const handleSubmit = e => {
     e.preventDefault();
     pickFunction();
-    handleChange(index, predict)
+    handleChange(index, winner)
 }
 
 
@@ -97,9 +107,8 @@ const handleSubmit = e => {
             </form>
             </Form> 
                 <div>
-                    The Predicted Winner is: {game.predictedWinner} 
+                    The Predicted Winner is: {winner} 
                 </div>
-                <h3>{predict}...{probability}</h3>
                 </Container>
          </div>
     )
