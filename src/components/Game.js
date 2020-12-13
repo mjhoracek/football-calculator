@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const Teams = styled.div`
@@ -23,83 +23,64 @@ const Form = styled.div`
     flex-direction: column;
 `
 
-const Game = ({index, game, handleChange }) => {
-const [predict, setPredict] = useState("xxxx")
-const [probability, setProbability] = useState(null)
-const [winner, setWinner] = useState(null)
+const Game = ({index, game, handleFavorite, handleOdds }) => {
+const [favorite, setFavorite] = useState(null)
+const [odds, setOdds] = useState(null)
 
+useEffect(() => {
+    handleFavorite(index, favorite);
+    handleOdds(index, odds);
+}, [favorite, odds])
  
-const pickFunction = () => {
-    if(probability === null || predict === "xxxx") {alert("Set Probability and Favorite")};
-
-    //Random number generated to test against favorite odds in probability variable 
-    let mathPick = Math.floor(Math.random() * 100);
-    console.log(mathPick)
-
-    //Switches predicted winner if math variable is higher than favorite odds
-    if(predict === game.home){
-        if(mathPick >= probability){
-            setWinner(game.away)
-        } else {
-            setWinner(game.home)
-        }
-    } else if(predict === game.away){
-        if(mathPick >= probability){
-            setWinner(game.home)
-        } else {
-            setWinner(game.away)
-        }
-    }
-
-
-
-
-}
-
-
-const handleSubmit = e => {
-    e.preventDefault();
-    pickFunction();
-    handleChange(index, winner)
-}
-
 
     return (
         <div>
             <Container>
                 <Teams>
-                    <h3>{game.home}</h3>
-                    <h3>VS</h3>
                     <h3>{game.away}</h3>
+                    <h3>VS</h3>
+                    <h3>{game.home}</h3>
                 </Teams>
 
             <Form>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <input 
                     type="radio" 
                     id="radio" 
                     name="winnerInput"
-                    value={predict}
-                    onChange={e => setPredict(game.home)}
+                    value={favorite}
+                    onChange={e => {
+                        setFavorite(game.away);
+                        handleFavorite(index, favorite);
+                        }
+                    }
                 />
                 <label for="Away">Away</label>
                 <input 
                     type="radio" 
                     id="radio" 
                     name="winnerInput"
-                    value={predict}
-                    onChange={e => setPredict(game.away)}
+                    value={favorite}
+                    onChange={e => {
+                        setFavorite(game.home);
+                        handleFavorite(index, favorite);
+                        }
+                    }
                 />
                 <label for="Home">Home</label>
             
                 <input 
                     type="number" 
                     name="probablity"
-                    value={probability}
+                    value={odds}
                     id="odds" 
                     min="0" 
                     max="100"
-                    onChange={e => setProbability(e.target.value)}
+                    onChange={e => {
+                        setOdds(e.target.value);
+                        handleOdds(index, odds);
+                        }
+                    }
                 />
                 <label for="odds">Enter Win Probability</label>
 
@@ -107,7 +88,7 @@ const handleSubmit = e => {
             </form>
             </Form> 
                 <div>
-                    The Predicted Winner is: {winner} 
+                    The Predicted Winner is: {favorite} 
                 </div>
                 </Container>
          </div>

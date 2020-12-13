@@ -8,7 +8,6 @@ const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/score
 const GameBox = () => {
     const [games, setGames] = useState([]);
 
-
     useEffect(() => {
       const fetchItems = async () => {
         const result = await axios(APILINK)
@@ -22,9 +21,10 @@ const GameBox = () => {
         let schedule = newGames.map(game => {
           let split = game.split(' at ');
           return { 
-            home: split[0],
-            away: split[1],     
-            predictedWinner: ''
+            away: split[0],
+            home: split[1],     
+            favorite: '',
+            odds: ''
           }
         }); 
         setGames(schedule)
@@ -32,19 +32,52 @@ const GameBox = () => {
       fetchItems();
     },[])
     
-    
-    const handleChange = (index, value) => {
+    const handleFavorite = (index, favorite) => {
       const newGames = [...games];
-      newGames[index].predictedWinner = value;
+      newGames[index].favorite = favorite;
           setGames(newGames);
         }
 
+    const handleOdds = (index, odds) => {
+      const newGames = [...games];
+      newGames[index].odds = odds;
+          setGames(newGames);
+        }
+
+/* const pickFunction = () => {
+    if(odds === null || favorite === "xxxx") {alert("Set Probability and Favorite")};
+
+    //Random number generated to test against favorite odds in probability variable 
+    let mathPick = Math.floor(Math.random() * 100);
+    console.log(mathPick)
+
+    //Switches predicted winner if math variable is higher than favorite odds
+    if(favorite === game.home){
+        if(mathPick >= odds){
+            setWinner(game.away)
+        } else {
+            setWinner(game.home)
+        }
+    } else if(favorite === game.away){
+        if(mathPick >= odds){
+            setWinner(game.home)
+        } else {
+            setWinner(game.away)
+        }
+    }
+} */
 
     return (
         <div>
             <div>
                 {games.map((game, index) => (
-                     <Game key={index} index={index} game={game} handleChange={handleChange} />
+                    <Game
+                      key={index} 
+                      index={index} 
+                      game={game} 
+                      handleFavorite={handleFavorite}
+                      handleOdds={handleOdds}
+                    />
                 ))}
              </div>
         </div>
