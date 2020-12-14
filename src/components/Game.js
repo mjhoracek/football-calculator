@@ -9,6 +9,8 @@ const Container = styled.div`
 `
 
 const SelectTeams = styled.div`
+    display: flex;
+    flex-direction: row;
     margin: 10px;
     border: 3px solid #333;
     background-color: #dfdfdf;
@@ -17,6 +19,11 @@ const SelectTeams = styled.div`
     text-align: center;
     background-color: white;
     width: 40vw;
+        .radio{
+            margin-right: 10px;
+            max-width: 200px;
+            background-color: red;
+        }
 `
 
 const SelectOdds = styled.div`
@@ -46,8 +53,6 @@ useEffect(() => {
     return (
         <Container>
                 <SelectTeams>
-                    <h3>Select The Favorite</h3>
-
                     <div>
                         <label for="away">{game.away}</label>
                         <input 
@@ -55,19 +60,22 @@ useEffect(() => {
                             name="winnerInput"
                             id='away'
                             value={favorite}
+                            className="radio"
                             onChange={e => {
                                 setFavorite(game.away);
                                 handleFavorite(index, favorite);
                                 }
                             }
                         />
-
+                    </div>
+                    <div>         
                         <label for="home">{game.home}</label>
                         <input 
                             type="radio"
                             name="winnerInput"
                             id='home'
                             value={favorite}
+                            className="radio"
                             onChange={e => {
                                 setFavorite(game.home);
                                 handleFavorite(index, favorite);
