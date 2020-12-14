@@ -24,7 +24,8 @@ const GameBox = () => {
             away: split[0],
             home: split[1],     
             favorite: '',
-            odds: ''
+            odds: '',
+            winner: 'No Winner Selected'
           }
         }); 
         setGames(schedule)
@@ -45,7 +46,7 @@ const GameBox = () => {
         }
 
 /* const pickFunction = () => {
-    if(odds === null || favorite === "xxxx") {alert("Set Probability and Favorite")};
+    if(odds === null || favorite === null) {alert("Set Probability and Favorite")};
 
     //Random number generated to test against favorite odds in probability variable 
     let mathPick = Math.floor(Math.random() * 100);

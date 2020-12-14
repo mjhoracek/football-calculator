@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-const Teams = styled.div`
-    display: flex;
-    margin-top: 100px;
-    justify-content: center;
-    background-color: rgb(34, 92, 146);
-    h3 {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-`
-
+//Styled Components
 const Container = styled.div`
     background-color: rgb(34, 92, 146);
-    color: white;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
 `
 
-const Form = styled.div`
-    display: block;
+const SelectTeams = styled.div`
+    margin: 10px;
+    border: 3px solid #333;
+    background-color: #dfdfdf;
+    display: flex;
     flex-direction: column;
+    text-align: center;
+    background-color: white;
+    width: 40vw;
 `
 
+const SelectOdds = styled.div`
+    margin: 10px;
+    border: 3px solid #333;
+    background-color: #dfdfdf;
+`
+
+const ProjectedWinner = styled.div`
+    margin: 10px;
+    border: 3px solid #333;
+    background-color: #dfdfdf;
+`
+
+//Game Component 
 const Game = ({index, game, handleFavorite, handleOdds }) => {
 const [favorite, setFavorite] = useState(null)
 const [odds, setOdds] = useState(null)
+
 
 useEffect(() => {
     handleFavorite(index, favorite);
@@ -34,64 +44,60 @@ useEffect(() => {
  
 
     return (
-        <div>
-            <Container>
-                <Teams>
-                    <h3>{game.away}</h3>
-                    <h3>VS</h3>
-                    <h3>{game.home}</h3>
-                </Teams>
+        <Container>
+                <SelectTeams>
+                    <h3>Select The Favorite</h3>
 
-            <Form>
-            <form>
-                <input 
-                    type="radio" 
-                    id="radio" 
-                    name="winnerInput"
-                    value={favorite}
-                    onChange={e => {
-                        setFavorite(game.away);
-                        handleFavorite(index, favorite);
-                        }
-                    }
-                />
-                <label for="Away">Away</label>
-                <input 
-                    type="radio" 
-                    id="radio" 
-                    name="winnerInput"
-                    value={favorite}
-                    onChange={e => {
-                        setFavorite(game.home);
-                        handleFavorite(index, favorite);
-                        }
-                    }
-                />
-                <label for="Home">Home</label>
-            
-                <input 
-                    type="number" 
-                    name="probablity"
-                    value={odds}
-                    id="odds" 
-                    min="0" 
-                    max="100"
-                    onChange={e => {
-                        setOdds(e.target.value);
-                        handleOdds(index, odds);
-                        }
-                    }
-                />
-                <label for="odds">Enter Win Probability</label>
+                    <div>
+                        <label for="away">{game.away}</label>
+                        <input 
+                            type="radio" 
+                            name="winnerInput"
+                            id='away'
+                            value={favorite}
+                            onChange={e => {
+                                setFavorite(game.away);
+                                handleFavorite(index, favorite);
+                                }
+                            }
+                        />
 
-                <input type="submit" value="Confirm" />
-            </form>
-            </Form> 
-                <div>
-                    The Predicted Winner is: {favorite} 
-                </div>
-                </Container>
-         </div>
+                        <label for="home">{game.home}</label>
+                        <input 
+                            type="radio"
+                            name="winnerInput"
+                            id='home'
+                            value={favorite}
+                            onChange={e => {
+                                setFavorite(game.home);
+                                handleFavorite(index, favorite);
+                                }
+                            }
+                        />
+                    </div>
+                </SelectTeams>
+
+                <SelectOdds>
+                    <label for="odds">Enter Win Probability</label>
+                    <input 
+                        type="number" 
+                        name="probablity"
+                        value={odds}
+                        id="odds" 
+                        min="0" 
+                        max="100"
+                        onChange={e => {
+                            setOdds(e.target.value);
+                            handleOdds(index, odds);
+                            }
+                        }
+                    />
+                </SelectOdds>   
+                 
+                <ProjectedWinner>
+                    The Predicted Winner is: <br /> {game.winner} 
+                </ProjectedWinner>
+        </Container>
     )
 }
 
