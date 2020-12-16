@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import './App.css'
-import Game from './components/Game'
 import GameBox from './components/GameBox'
+import Header from './components/Header'
 
 
 
@@ -10,6 +8,7 @@ function App() {
 
   return (
     <div>
+      <Header />
       <GameBox />
     </div>
   );

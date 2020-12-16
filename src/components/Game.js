@@ -39,10 +39,11 @@ const ProjectedWinner = styled.div`
 `
 
 //Game Component 
-const Game = ({index, game, handleFavorite, handleOdds }) => {
+const Game = ({index, game, handleFavorite, handleOdds, winners }) => {
 const [favorite, setFavorite] = useState(null)
 const [odds, setOdds] = useState(null)
 
+console.log(winners)
 
 useEffect(() => {
     handleFavorite(index, favorite);
@@ -57,7 +58,7 @@ useEffect(() => {
                         <label for="away">{game.away}</label>
                         <input 
                             type="radio" 
-                            name="winnerInput"
+                            name={index}
                             id='away'
                             value={favorite}
                             className="radio"
@@ -72,7 +73,7 @@ useEffect(() => {
                         <label for="home">{game.home}</label>
                         <input 
                             type="radio"
-                            name="winnerInput"
+                            name={index}
                             id='home'
                             value={favorite}
                             className="radio"
@@ -103,8 +104,9 @@ useEffect(() => {
                 </SelectOdds>   
                  
                 <ProjectedWinner>
-                    The Predicted Winner is: <br /> {game.winner} 
+                    The Predicted Winner is: <br />  
                 </ProjectedWinner>
+
         </Container>
     )
 }
