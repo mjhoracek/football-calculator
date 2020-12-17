@@ -7,7 +7,6 @@ const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/score
 
 const GameBox = () => {
     const [games, setGames] = useState([]);
-    const [winners, setWinners] = useState([]);
 
     useEffect(() => {
       const fetchItems = async () => {
@@ -46,18 +45,15 @@ const GameBox = () => {
           setGames(newGames);
         }
 
-    const pickHome = (index) => {
-      const newGames =
-    }
 
     const pickFunction = () => {
       let infoAlert = 'Favorite/Odds Not Entered';
 
-       const outcomes = games.map(game => {
+            setGames(games.map(game => {
 
             //check if user inputed all the info for each game
             if(game.odds === '' || game.favorite === ''){
-              return (infoAlert);
+              return {...game, winner: infoAlert};
             };
             
             //Random number generated to test against favorite odds in probability variable 
@@ -66,20 +62,19 @@ const GameBox = () => {
             //Determine winner with mathPick random number
             if(game.favorite === game.home){
               if(mathPick >= game.odds){
-                  return (game.away)
+                  return {...game, winner: game.away}
               } else {
-                  return (game.home)
+                return {...game, winner: game.home}
               }
           } else if(game.favorite === game.away){
               if(mathPick >= game.odds){
-                  return (game.home)
+                return {...game, winner: game.home}
               } else {
-                  return (game.away)
+                  return {...game, winner: game.away}
               }
           }
 
-          });
-      setWinners(outcomes);
+          }));
     }
 
     const handleSubmit = e => {
@@ -88,7 +83,7 @@ const GameBox = () => {
     }
 
     const resetButton = e => {
-      setWinners([]);
+      
     }
 
     return (
@@ -104,7 +99,6 @@ const GameBox = () => {
                       game={game} 
                       handleFavorite={handleFavorite}
                       handleOdds={handleOdds}
-                      winners={winners}
                     />
                 ))}
              </div>

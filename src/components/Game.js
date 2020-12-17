@@ -39,11 +39,10 @@ const ProjectedWinner = styled.div`
 `
 
 //Game Component 
-const Game = ({index, game, handleFavorite, handleOdds, winners }) => {
+const Game = ({index, game, handleFavorite, handleOdds }) => {
 const [favorite, setFavorite] = useState(null)
 const [odds, setOdds] = useState(null)
 
-console.log(winners)
 
 useEffect(() => {
     handleFavorite(index, favorite);
