@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(82, 82, 82);
+  background: #000 url('./background.jpg') no-repeat center center/cover;
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

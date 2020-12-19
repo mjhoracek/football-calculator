@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 //Styled Components
 const Container = styled.div`
-    background-color: rgb(34, 92, 146);
     display: flex;
     justify-content: center;
     width: 90vw;
@@ -11,7 +10,8 @@ const Container = styled.div`
 
 const SelectTeams = styled.div`
     display: flex;
-    background-color: gray;
+    background-color: rgb(17,22,25,100);
+    color: white;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,6 @@ const SelectTeams = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: white;
     width: 40vw;
         .radio{
             margin-right: 10px;
@@ -41,7 +40,8 @@ const SelectOdds = styled.div`
     align-items: center;
     padding: 5px 5px;
     margin: 10px;
-    background-color: #dfdfdf;
+    background-color: rgb(17,22,25,100);
+    color: white;
         label input {
             display: inline;
         }
@@ -56,7 +56,8 @@ const ProjectedWinner = styled.div`
     border-radius: 15px;
     padding: 10px 10px;
     box-shadow: 3px 3px 15px 0px;
-    background-color: #dfdfdf;
+    background-color: rgb(17,22,25,100);
+    color: white;
 `
 
 //Game Component 

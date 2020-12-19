@@ -12,7 +12,6 @@ const Form = styled.form`
 `
 
 const Button = styled.button`
-  display: inline;
   cursor: pointer;
   outline: none;
   border: none;
