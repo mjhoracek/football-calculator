@@ -10,10 +10,12 @@ const Container = styled.div`
 
 const SelectTeams = styled.div`
     display: flex;
+    background-color: gray;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: 10px;
-    border: 3px solid #333;
-    background-color: #dfdfdf;
+    box-shadow: 3px 3px 15px 0px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -24,17 +26,29 @@ const SelectTeams = styled.div`
             max-width: 200px;
             background-color: red;
         }
-`
+  `     
 
 const SelectOdds = styled.div`
+    display: flex;
+    min-height: 50px;
+    padding: 10px 10px;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 3px 3px 15px 0px;
+    align-items: center;
+    padding: 5px 5px;
     margin: 10px;
-    border: 3px solid #333;
     background-color: #dfdfdf;
+        label input {
+            display: inline;
+        }
 `
 
 const ProjectedWinner = styled.div`
     margin: 10px;
-    border: 3px solid #333;
+    min-width: 200px;
+    padding: 10px 10px;
+    box-shadow: 3px 3px 15px 0px;
     background-color: #dfdfdf;
 `
 

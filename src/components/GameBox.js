@@ -83,7 +83,16 @@ const GameBox = () => {
     }
 
     const resetButton = e => {
-      
+      setGames(games.map(game => {
+        return {
+          ...game,
+          favorite: '',
+          odds: '',
+          winner: ''
+        }
+      }
+        )
+      )
     }
 
     return (
