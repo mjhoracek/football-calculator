@@ -1,8 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Game from './Game'
+import styled from 'styled-components'
 
 const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
+
+//Styled Components
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+`
+
+const Button = styled.button`
+  display: inline;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: green;
+  width: 150px;
+  height: 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 20px 20px;
+`
+
 
 
 const GameBox = () => {
@@ -83,6 +106,7 @@ const GameBox = () => {
     }
 
     const resetButton = e => {
+      e.preventDefault();
       setGames(games.map(game => {
         return {
           ...game,
@@ -97,9 +121,11 @@ const GameBox = () => {
 
     return (
         <div>
-            <button type="button" onClick={resetButton}>Reset</button>
             <form onSubmit={handleSubmit}>
-              <button type="submit" >Calculate</button>
+              <div style={{  display: 'flex', justifyContent: "center"}}>
+                <Button type="submit" >Calculate</Button>
+                <Button type="button" onClick={resetButton}>Reset</Button>
+              </div>
             <div>
                 {games.map((game, index) => (
                     <Game

@@ -6,6 +6,7 @@ const Container = styled.div`
     background-color: rgb(34, 92, 146);
     display: flex;
     justify-content: center;
+    width: 90vw;
 `
 
 const SelectTeams = styled.div`
@@ -16,6 +17,7 @@ const SelectTeams = styled.div`
     align-items: center;
     margin: 10px;
     box-shadow: 3px 3px 15px 0px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -35,6 +37,7 @@ const SelectOdds = styled.div`
     flex-direction: column;
     justify-content: center;
     box-shadow: 3px 3px 15px 0px;
+    border-radius: 15px;
     align-items: center;
     padding: 5px 5px;
     margin: 10px;
@@ -45,8 +48,12 @@ const SelectOdds = styled.div`
 `
 
 const ProjectedWinner = styled.div`
+    display: flex;
+    flex-direction: column;
     margin: 10px;
     min-width: 200px;
+    min-height: 50px;
+    border-radius: 15px;
     padding: 10px 10px;
     box-shadow: 3px 3px 15px 0px;
     background-color: #dfdfdf;
