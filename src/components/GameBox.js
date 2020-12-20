@@ -6,10 +6,6 @@ import styled from 'styled-components'
 const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
 
 //Styled Components
-const Form = styled.form`
-  display: flex;
-  justify-content: center;
-`
 
 const Button = styled.button`
   cursor: pointer;
@@ -96,8 +92,8 @@ const GameBox = () => {
               } else {
                   return {...game, winner: game.away}
               }
-          }
-
+          } 
+            return game;
           }));
     }
 

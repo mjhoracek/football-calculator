@@ -73,7 +73,7 @@ const [odds, setOdds] = useState('')
 useEffect(() => {
     handleFavorite(index, favorite);
     handleOdds(index, odds);
-}, [favorite, odds, index, handleFavorite, handleOdds ])
+}, [favorite, odds])
 
     return (
         <Container>
