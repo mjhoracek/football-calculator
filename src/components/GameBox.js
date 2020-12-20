@@ -16,13 +16,15 @@ const Button = styled.button`
   outline: none;
   border: none;
   background-color: green;
-  width: 150px;
+  min-width: 100px;
   height: 30px;
   border-radius: 30px;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
   margin: 20px 20px;
+  background-color: rgb(2,90,0);
+  color: white;
 `
 
 
@@ -123,7 +125,7 @@ const GameBox = () => {
             <form onSubmit={handleSubmit}>
               <div style={{  display: 'flex', justifyContent: "center"}}>
                 <Button type="submit" >Calculate</Button>
-                <Button type="button" onClick={resetButton}>Reset</Button>
+                <Button style={{backgroundColor: 'rgb(90,0,0'}} type="button" onClick={resetButton}>Reset</Button>
               </div>
             <div>
                 {games.map((game, index) => (

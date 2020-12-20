@@ -6,6 +6,10 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     width: 90vw;
+
+    @media (max-width: 960px){
+        font-size: 10px;
+    }
 `
 
 const SelectTeams = styled.div`
@@ -14,7 +18,7 @@ const SelectTeams = styled.div`
     color: white;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     margin: 10px;
     box-shadow: 3px 3px 15px 0px;
     border-radius: 15px;
@@ -32,6 +36,7 @@ const SelectTeams = styled.div`
 const SelectOdds = styled.div`
     display: flex;
     min-height: 50px;
+    min-width: 20vw;
     padding: 10px 10px;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +56,7 @@ const ProjectedWinner = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;
-    min-width: 200px;
+    width: 20vw;
     min-height: 50px;
     border-radius: 15px;
     padding: 10px 10px;
@@ -68,7 +73,7 @@ const [odds, setOdds] = useState('')
 useEffect(() => {
     handleFavorite(index, favorite);
     handleOdds(index, odds);
-}, [favorite, odds])
+}, [favorite, odds, index, handleFavorite, handleOdds ])
 
     return (
         <Container>
@@ -88,7 +93,7 @@ useEffect(() => {
                             }
                         />
                     </div>
-                    <div>         
+                    <div>        
                         <label for="home">{game.home}</label>
                         <input 
                             type="radio"
@@ -106,7 +111,7 @@ useEffect(() => {
                 </SelectTeams>
 
                 <SelectOdds>
-                    <label for="odds">Enter Win Probability</label>
+                    <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
                     <input 
                         type="number" 
                         name="probablity"
@@ -114,6 +119,7 @@ useEffect(() => {
                         id="odds" 
                         min="0" 
                         max="100"
+                        style={{width: "40%"}}
                         onChange={e => {
                             setOdds(e.target.value);
                             handleOdds(index, odds);
