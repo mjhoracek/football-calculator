@@ -128,7 +128,9 @@ const GameBox = () => {
                     <Game
                       key={index} 
                       index={index} 
-                      game={game} 
+                      game={game}
+                      games={games} 
+                      setGames={setGames}
                       handleFavorite={handleFavorite}
                       handleOdds={handleOdds}
                     />

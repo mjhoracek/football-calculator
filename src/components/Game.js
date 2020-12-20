@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 //Styled Components
@@ -67,14 +67,6 @@ const ProjectedWinner = styled.div`
 
 //Game Component 
 const Game = ({index, game, handleFavorite, handleOdds }) => {
-const [favorite, setFavorite] = useState('')
-const [odds, setOdds] = useState('')
-
-useEffect(() => {
-    handleFavorite(index, favorite);
-    handleOdds(index, odds);
-    // eslint-disable-next-line
-}, [favorite, odds])
 
     return (
         <Container>
@@ -85,11 +77,10 @@ useEffect(() => {
                             type="radio" 
                             name={index}
                             id='away'
-                            value={favorite === game.away ? true : false}
+                            value={game.favorite === game.away ? true : false}
                             className="radio"
-                            onChange={e => {
-                                setFavorite(game.away);
-                                handleFavorite(index, favorite);
+                            onClick={e => {
+                                handleFavorite(index, game.away);
                                 }
                             }
                         />
@@ -100,11 +91,10 @@ useEffect(() => {
                             type="radio"
                             name={index}
                             id='home'
-                            value={favorite === game.home ? true : false}
+                            value={game.favorite === game.home ? true : false}
                             className="radio"
-                            onChange={e => {
-                                setFavorite(game.home);
-                                handleFavorite(index, favorite);
+                            onClick={e => {
+                                handleFavorite(index, game.home);
                                 }
                             }
                         />
@@ -116,14 +106,13 @@ useEffect(() => {
                     <input 
                         type="number" 
                         name="probablity"
-                        value={odds}
+                        value={game.odds}
                         id="odds" 
                         min="0" 
                         max="100"
                         style={{width: "40%"}}
                         onChange={e => {
-                            setOdds(e.target.value);
-                            handleOdds(index, odds);
+                            handleOdds(index, e.target.value);
                             }
                         }
                     />
