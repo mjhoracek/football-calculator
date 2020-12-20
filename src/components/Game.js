@@ -73,6 +73,7 @@ const [odds, setOdds] = useState('')
 useEffect(() => {
     handleFavorite(index, favorite);
     handleOdds(index, odds);
+    // eslint-disable-next-line
 }, [favorite, odds])
 
     return (
