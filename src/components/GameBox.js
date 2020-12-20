@@ -3,7 +3,7 @@ import axios from 'axios'
 import Game from './Game'
 import styled from 'styled-components'
 
-const APILINK = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
+const APILINK = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
 
 //Styled Components
 
