@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import OddsSelector from './OddsSelector'
 
 //Styled Components
 const Container = styled.div`
@@ -102,7 +103,7 @@ const Game = ({index, game, handleFavorite, handleOdds }) => {
                 </SelectTeams>
 
                 <SelectOdds>
-                    <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
+{/*                     <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
                     <input 
                         type="number" 
                         name="probablity"
@@ -115,7 +116,8 @@ const Game = ({index, game, handleFavorite, handleOdds }) => {
                             handleOdds(index, e.target.value);
                             }
                         }
-                    />
+                    /> */}
+                    <OddsSelector index={index} game={game} handleOdds={handleOdds} />
                 </SelectOdds>   
                  
                 <ProjectedWinner>
