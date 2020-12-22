@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-const spreadTable = [[-0.5, 50], [-1.0, 60]];
+const spreadTable = [[0.5, 50], [1.0, 60], [1.5, 70]];
 
 const OddsSelector = ( {index, game, handleOdds }) => {
 const [inputType, setInputType] = useState("percentage")
 
+
 const lookupSpread = (userInput) => {
-    const spreadPercentage = spreadTable.filter(array => array[0] === userInput)[1];
-
-    return spreadPercentage;
+    const spreadPercentage = spreadTable.filter(array => array[0] === userInput); 
+    const arr = (spreadPercentage.flat())
+    return arr[1];
 }
-
 
 if(inputType === 'percentage'){
     return (
@@ -75,20 +75,23 @@ if(inputType === 'spread'){
                 />
                 
                 <br/>
-
+                
                 <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
                 <select
                     name="probablity"
-                    value={game.odds}
                     id="odds" 
                     style={{width: "40%"}}
                     onChange={e => {
+                        console.log(e.target.value)
+                        console.log(lookupSpread(e.target.value))
                         handleOdds(index, lookupSpread(e.target.value));
                         }
                     }
                 >
-                    <option value={-0.5}>-0.5</option>
-                    <option value={-1.0}>-1.0</option>
+                    <option value="">--Select Spread--</option>
+                    <option value={0.5}>-0.5</option>
+                    <option value={1.0}>-1.0</option>
+                    <option value={1.5}>-1.5</option>
 {/*                 <option value={-1.5}>-0.5</option>
                     <option value={-2.0}>-0.5</option>
                     <option value={-2.5}>-0.5</option> */}
