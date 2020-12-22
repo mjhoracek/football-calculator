@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
 
-const spreadTable = [[0.5, 50], [1.0, 60], [1.5, 70]];
+const spreadTable = [
+    [0.5, 50],
+    [1.0, 50]
+]
+
 
 const OddsSelector = ( {index, game, handleOdds }) => {
 const [inputType, setInputType] = useState("percentage")
 
+/* const spreadConverter = (spread) => {
+    console.log(spread, "switch")
+    switch(spread) {
+        case 0.5:
+            return 50;
+        case 1.0:
+            return 60;
+        default:
+            return "Nothing was matched";
+    }
+} */
 
 const lookupSpread = (userInput) => {
-    const spreadPercentage = spreadTable.filter(array => array[0] === userInput); 
+    const spreadPercentage = spreadTable.filter(array => array[0] === userInput)
     const arr = (spreadPercentage.flat())
     return arr[1];
 }
@@ -83,15 +98,14 @@ if(inputType === 'spread'){
                     style={{width: "40%"}}
                     onChange={e => {
                         console.log(e.target.value)
-                        console.log(lookupSpread(e.target.value))
-                        handleOdds(index, lookupSpread(e.target.value));
+                        let input = Number(e.target.value)
+                        handleOdds(index, lookupSpread(input));
                         }
                     }
                 >
                     <option value="">--Select Spread--</option>
-                    <option value={0.5}>-0.5</option>
-                    <option value={1.0}>-1.0</option>
-                    <option value={1.5}>-1.5</option>
+                    <option value={Number(0.5)}>-0.5</option>
+                    <option value={Number(1.0)}>-1.0</option>
 {/*                 <option value={-1.5}>-0.5</option>
                     <option value={-2.0}>-0.5</option>
                     <option value={-2.5}>-0.5</option> */}
