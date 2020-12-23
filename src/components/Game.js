@@ -26,7 +26,7 @@ const SelectTeams = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 40vw;
+    width: 30vw;
         .radio{
             margin-right: 10px;
             max-width: 200px;
@@ -37,7 +37,7 @@ const SelectTeams = styled.div`
 const SelectOdds = styled.div`
     display: flex;
     min-height: 50px;
-    min-width: 20vw;
+    min-width: 30vw;
     padding: 10px 10px;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +57,7 @@ const ProjectedWinner = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;
-    width: 20vw;
+    width: 30vw;
     min-height: 50px;
     border-radius: 15px;
     padding: 10px 10px;
