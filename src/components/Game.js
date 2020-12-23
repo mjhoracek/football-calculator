@@ -13,7 +13,7 @@ const Container = styled.div`
     }
 
     @media (max-width: 540px){
-        font-size: 6px;
+        font-size: 8px;
     }
 `
 
@@ -30,7 +30,7 @@ const SelectTeams = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 35vw;
+    width: 40vw;
         .radio{
             margin-right: 10px;
             max-width: 200px;
@@ -40,7 +40,7 @@ const SelectTeams = styled.div`
 
 const SelectOdds = styled.div`
     display: flex;
-    width: 35vw;
+    width: 30vw;
     padding: 10px 10px;
     flex-direction: column;
     justify-content: center;
