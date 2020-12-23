@@ -77,7 +77,7 @@ if(oddsType === 'spread'){
                 <select
                     name="probablity"
                     id="odds" 
-                    width='50%'
+                    style={{width: '95%'}}
                     onChange={e => {
                         console.log(e.target.value)
                         let input = Number(e.target.value)
