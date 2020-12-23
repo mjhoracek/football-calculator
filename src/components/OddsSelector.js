@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const spreadTable = [
     [0, 50],
@@ -39,8 +39,7 @@ const spreadTable = [
 ]
 
 
-const OddsSelector = ( {index, game, handleOdds }) => {
-const [inputType, setInputType] = useState("percentage")
+const OddsSelector = ( {index, game, handleOdds, oddsType }) => {
 
 const lookupSpread = (userInput) => {
     const spreadPercentage = spreadTable.filter(array => array[0] === userInput)
@@ -48,38 +47,20 @@ const lookupSpread = (userInput) => {
     return arr[1];
 }
 
-if(inputType === 'percentage'){
+if(oddsType === 'percentage'){
     return (
-        <div>
-                <label for="percentage">Percentage</label>
-                <input 
-                    type="radio"
-                    id="percentage"
-                    name={game.home}
-                    value={(inputType === 'percentage') ? true : false}
-                    onChange={ () => setInputType("percentage")}
-                />
-
-                <label for="spread">Spread</label>
-                <input 
-                    type="radio"
-                    id="spread"
-                    name={game.home}
-                    value={(inputType === 'spread') ? true : false}
-                    onChange={ () => setInputType('spread')}
-                />
-
-                <br/>
-
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
                 <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
+                <br/>
                 <input 
                     type="number" 
                     name="probablity"
                     value={game.odds}
+                    placeholder='Enter Win % 1-100'
                     id="odds" 
                     min="0" 
                     max="100"
-                    style={{width: "40%"}}
+                    width='50%'
                     onChange={e => {
                         handleOdds(index, e.target.value);
                         }
@@ -89,34 +70,15 @@ if(inputType === 'percentage'){
     )
 }
 
-if(inputType === 'spread'){
+if(oddsType === 'spread'){
     return (
-        <div>
-                <label for="percentage">Percentage</label>
-                <input 
-                    type="radio"
-                    id="percentage"
-                    name={game.home}
-                    value={(inputType === 'percentage') ? true : false}
-                    onChange={() => setInputType("percentage")}
-                />
-
-                <label for="spread">Spread</label>
-                <input 
-                    type="radio"
-                    id="spread"
-                    name={game.home}
-                    value={(inputType === 'spread') ? true : false}
-                    onChange={ () => setInputType('spread')}
-                />
-                
-                <br/>
-                
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
                 <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
+                <br/>
                 <select
                     name="probablity"
                     id="odds" 
-                    style={{width: "40%"}}
+                    width='50%'
                     onChange={e => {
                         console.log(e.target.value)
                         let input = Number(e.target.value)

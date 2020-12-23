@@ -36,8 +36,7 @@ const SelectTeams = styled.div`
 
 const SelectOdds = styled.div`
     display: flex;
-    min-height: 50px;
-    min-width: 30vw;
+    width: 30vw;
     padding: 10px 10px;
     flex-direction: column;
     justify-content: center;
@@ -55,7 +54,9 @@ const SelectOdds = styled.div`
 
 const ProjectedWinner = styled.div`
     display: flex;
-    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
     margin: 10px;
     width: 30vw;
     min-height: 50px;
@@ -67,7 +68,7 @@ const ProjectedWinner = styled.div`
 `
 
 //Game Component 
-const Game = ({index, game, handleFavorite, handleOdds }) => {
+const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType }) => {
 
     return (
         <Container>
@@ -103,25 +104,19 @@ const Game = ({index, game, handleFavorite, handleOdds }) => {
                 </SelectTeams>
 
                 <SelectOdds>
-{/*                     <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
-                    <input 
-                        type="number" 
-                        name="probablity"
-                        value={game.odds}
-                        id="odds" 
-                        min="0" 
-                        max="100"
-                        style={{width: "40%"}}
-                        onChange={e => {
-                            handleOdds(index, e.target.value);
-                            }
-                        }
-                    /> */}
-                    <OddsSelector index={index} game={game} handleOdds={handleOdds} />
+                    <OddsSelector 
+                        index={index}
+                        game={game} 
+                        handleOdds={handleOdds}
+                        oddsType={oddsType}
+                        setOddsType={setOddsType}
+                    />
                 </SelectOdds>   
                  
                 <ProjectedWinner>
+                    <div>
                     The Predicted Winner is: <br />  {game.winner}
+                    </div>
                 </ProjectedWinner>
 
         </Container>

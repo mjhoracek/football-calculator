@@ -22,11 +22,20 @@ const Button = styled.button`
   background-color: rgb(2,90,0);
   color: white;
 `
+const Radios = styled.div`
+  display: flex;
+  justify-content: center;
+  color: white;
+    input label{
+      padding: 10px 10px;
+    }
+`
 
 
 
 const GameBox = () => {
     const [games, setGames] = useState([]);
+    const [oddsType, setOddsType] = useState('percentage')
 
     useEffect(() => {
       const fetchItems = async () => {
@@ -45,7 +54,7 @@ const GameBox = () => {
             home: split[1],     
             favorite: '',
             odds: '',
-            winner: ''
+            winner: '',
           }
         }); 
         setGames(schedule)
@@ -64,6 +73,7 @@ const GameBox = () => {
       newGames[index].odds = odds;
           setGames(newGames);
         }
+
 
 
     const pickFunction = () => {
@@ -118,6 +128,27 @@ const GameBox = () => {
 
     return (
         <div>
+            <Radios>
+
+            <label for="percentage">Percentage</label>
+                <input 
+                    type="radio"
+                    id="percentage"
+                    name='oddSelector'
+                    value={(oddsType === 'percentage') ? true : false}
+                    onChange={ () => setOddsType("percentage")}
+                />
+
+                <label for="spread">Spread</label>
+                <input 
+                    type="radio"
+                    id="spread"
+                    name='oddSelector'
+                    value={(oddsType === 'spread') ? true : false}
+                    onChange={ () => setOddsType('spread')}
+                />
+            </Radios>
+
             <form onSubmit={handleSubmit}>
               <div style={{  display: 'flex', justifyContent: "center"}}>
                 <Button type="submit" >Calculate</Button>
@@ -133,6 +164,8 @@ const GameBox = () => {
                       setGames={setGames}
                       handleFavorite={handleFavorite}
                       handleOdds={handleOdds}
+                      oddsType={oddsType}
+                      setOddsType={setOddsType}
                     />
                 ))}
              </div>
