@@ -13,7 +13,7 @@ const Container = styled.div`
     }
 
     @media (max-width: 540px){
-        font-size: 8px;
+        font-size: 6px;
     }
 `
 
@@ -119,7 +119,7 @@ const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType })
                  
                 <ProjectedWinner>
                     <div>
-                    The Predicted Winner is: <br /> {game.winner}
+                    The Predicted Winner is: <br /><br /> {game.winner}
                     </div>
                 </ProjectedWinner>
 
