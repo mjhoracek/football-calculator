@@ -6,7 +6,7 @@ import OddsSelector from './OddsSelector'
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    width: 90vw;
+    width: 97vw;
 
     @media (max-width: 960px){
         font-size: 10px;
@@ -30,7 +30,7 @@ const SelectTeams = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30vw;
+    width: 35vw;
         .radio{
             margin-right: 10px;
             max-width: 200px;
@@ -40,7 +40,7 @@ const SelectTeams = styled.div`
 
 const SelectOdds = styled.div`
     display: flex;
-    width: 30vw;
+    width: 35vw;
     padding: 10px 10px;
     flex-direction: column;
     justify-content: center;
