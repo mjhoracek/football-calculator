@@ -60,7 +60,7 @@ const ProjectedWinner = styled.div`
     display: flex;
     text-align: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     margin: 10px;
     width: 30vw;
     min-height: 50px;
@@ -119,7 +119,10 @@ const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType })
                  
                 <ProjectedWinner>
                     <div>
-                    The Predicted Winner is: <br /><br /> {game.winner}
+                    The Predicted Winner is:
+                    </div>
+                    <div>
+                     {game.winner}
                     </div>
                 </ProjectedWinner>
 
