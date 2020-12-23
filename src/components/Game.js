@@ -11,6 +11,10 @@ const Container = styled.div`
     @media (max-width: 960px){
         font-size: 10px;
     }
+
+    @media (max-width: 540px){
+        font-size: 8px;
+    }
 `
 
 const SelectTeams = styled.div`
@@ -43,7 +47,7 @@ const SelectOdds = styled.div`
     box-shadow: 3px 3px 15px 0px;
     border-radius: 15px;
     align-items: center;
-    padding: 5px 5px;
+    padding: 10px 10px;
     margin: 10px;
     background-color: rgb(17,22,25,100);
     color: white;
@@ -115,7 +119,7 @@ const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType })
                  
                 <ProjectedWinner>
                     <div>
-                    The Predicted Winner is: <br />  {game.winner}
+                    The Predicted Winner is: <br /> {game.winner}
                     </div>
                 </ProjectedWinner>
 

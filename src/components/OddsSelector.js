@@ -50,13 +50,13 @@ const lookupSpread = (userInput) => {
 if(oddsType === 'percentage'){
     return (
         <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
-                <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
-                <br/>
+                <label style={{marginBottom: "0px"}} for="odds">Enter Win Probability</label>
                 <input 
+                    style={{padding: '7px 7px'}}
                     type="number" 
                     name="probablity"
                     value={game.odds}
-                    placeholder='Enter Win % 1-100'
+                    placeholder='Win % 1-100'
                     id="odds" 
                     min="0" 
                     max="100"
@@ -73,8 +73,7 @@ if(oddsType === 'percentage'){
 if(oddsType === 'spread'){
     return (
         <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
-                <label style={{marginBottom: "3px"}} for="odds">Enter Win Probability</label>
-                <br/>
+                <label style={{marginBottom: "0px"}} for="odds">Enter Win Probability</label>
                 <select
                     name="probablity"
                     id="odds" 

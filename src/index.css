@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(82, 82, 82);
-  background: #000 url('./background.jpg') no-repeat center center/cover;
+  background: linear-gradient(90deg, #2F2F2F 0%, rgba(50, 49, 49, 0.84) 51.25%, #323131 100%);
   font-weight: bold;
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

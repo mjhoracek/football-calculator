@@ -11,7 +11,6 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   border: none;
-  background-color: green;
   min-width: 100px;
   height: 30px;
   border-radius: 30px;
@@ -21,14 +20,17 @@ const Button = styled.button`
   margin: 20px 20px;
   background-color: rgb(2,90,0);
   color: white;
+
+
+    :hover  {
+      transform: scale(1.1);
+    }
 `
 const Radios = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: row;
   color: white;
-    input label{
-      padding: 10px 10px;
-    }
 `
 
 
@@ -129,8 +131,8 @@ const GameBox = () => {
     return (
         <div>
             <Radios>
-
-            <label for="percentage">Percentage</label>
+              <div style={{paddingLeft: '30px', paddingRight: '30px'}}>
+                <label for="percentage">Percentage</label>
                 <input 
                     type="radio"
                     id="percentage"
@@ -138,7 +140,9 @@ const GameBox = () => {
                     value={(oddsType === 'percentage') ? true : false}
                     onChange={ () => setOddsType("percentage")}
                 />
-
+              </div>
+                
+              <div style={{paddingLeft: '30px', paddingRight: '30px'}}>
                 <label for="spread">Spread</label>
                 <input 
                     type="radio"
@@ -147,12 +151,13 @@ const GameBox = () => {
                     value={(oddsType === 'spread') ? true : false}
                     onChange={ () => setOddsType('spread')}
                 />
+              </div>
             </Radios>
 
             <form onSubmit={handleSubmit}>
               <div style={{  display: 'flex', justifyContent: "center"}}>
-                <Button type="submit" >Calculate</Button>
-                <Button style={{backgroundColor: 'rgb(90,0,0'}} type="button" onClick={resetButton}>Reset</Button>
+                <Button className="submit">Calculate</Button>
+                <Button classname="reset" style={{backgroundColor: 'rgb(90,0,0'}} type="button" onClick={resetButton}>Reset</Button>
               </div>
             <div>
                 {games.map((game, index) => (
