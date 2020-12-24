@@ -74,6 +74,15 @@ const ProjectedWinner = styled.div`
 //Game Component 
 const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType }) => {
 
+const upset = {
+    display: 'inline',
+    color: 'red'
+}
+
+const noUpset = {
+    display: 'none'
+}
+
     return (
         <Container>
                 <SelectTeams>
@@ -122,7 +131,7 @@ const Game = ({index, game, handleFavorite, handleOdds, oddsType, setOddsType })
                     The Predicted Winner is:
                     </div>
                     <div>
-                     {game.winner}
+                     {game.winner} <span style={game.upset ? upset : noUpset} > UPSET!</span>
                     </div>
                 </ProjectedWinner>
 

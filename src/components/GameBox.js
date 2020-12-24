@@ -57,6 +57,7 @@ const GameBox = () => {
             favorite: '',
             odds: '',
             winner: '',
+            upset: false
           }
         }); 
         setGames(schedule)
@@ -94,15 +95,15 @@ const GameBox = () => {
             //Determine winner with mathPick random number
             if(game.favorite === game.home){
               if(mathPick >= game.odds){
-                  return {...game, winner: game.away}
+                  return {...game, winner: game.away, upset: true}
               } else {
-                return {...game, winner: game.home}
+                return {...game, winner: game.home, upset: false}
               }
           } else if(game.favorite === game.away){
               if(mathPick >= game.odds){
-                return {...game, winner: game.home}
+                return {...game, winner: game.home, upset: true}
               } else {
-                  return {...game, winner: game.away}
+                  return {...game, winner: game.away, upset: false}
               }
           } 
             return game;
@@ -121,7 +122,8 @@ const GameBox = () => {
           ...game,
           favorite: '',
           odds: '',
-          winner: ''
+          winner: '',
+          upset: false
         }
       }
         )
